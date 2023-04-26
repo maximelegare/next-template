@@ -2,8 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "aos/dist/aos.css";
 
-body{
-    @apply text-base;
+body {
+  @apply text-base;
 }
 
+
+
+
+
+/**
+* Data AOS Custom Animations
+*/
+
+[data-aos="fade-left-custom"] {
+  opacity: 0;
+  transform: translate(20px);
+}
+[data-aos="fade-left-custom"].aos-animate {
+  opacity: 1;
+  transform: translate(0);
+}
+
+
+
+[data-aos="fade-up-custom"] {
+  opacity: 0;
+  transform: translate(0, 20px);
+}
+
+[data-aos="fade-up-custom"].aos-animate {
+  opacity: 1;
+  transform: translate(0);
+}
