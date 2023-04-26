@@ -1,22 +1,27 @@
-import  React from "react";
-import type { ReactElement, FC } from "react"
+import React from "react";
+import type { ReactElement, FC } from "react";
 
 import { useMemo } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 
-type Props = {
-  children:ReactElement;
-}
+const headerLinks = [
+  { title: "Portfolio", route: "#" },
+  { title: "About", route: "#" },
+];
 
-const Layout:FC<Props> = ({ children }) => {
+type Props = {
+  children: ReactElement;
+};
+
+const Layout: FC<Props> = ({ children, }) => {
   const memoizedValue = useMemo(() => <>{children}</>, [children]);
 
   return (
     <>
-      <Header></Header>
+      <Header links={headerLinks}></Header>
       <main>{memoizedValue}</main>
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </>
   );
 };
