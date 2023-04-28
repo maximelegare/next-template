@@ -10,10 +10,12 @@ import { FaGlobeAmericas } from "react-icons/fa";
 
 import { useTranslation } from "next-i18next";
 
-export const Header: FC = () => {
-  const { t, i18n } = useTranslation(["layout"]);
+import { SvgWrapper } from "~/components/core/SvgWrapper";
+import Logo from "../../public/assets/SVG/logo.svg";
 
- 
+export const Header: FC = () => {
+  const { t } = useTranslation(["layout"]);
+
   const headerLinks = [
     { title: "header.portfolio", route: "#" },
     { title: "header.about", route: "#" },
@@ -27,9 +29,15 @@ export const Header: FC = () => {
 
   return (
     <>
-      <header className={`fixed flex h-16  w-full justify-center`}>
+      <header
+        data-aos="fade-down"
+        data-aos-duration="800"
+        data-aos-easing="ease-in-out-back"
+        data-aos-delay="900"
+        className={`fixed flex h-16  w-full justify-center`}
+      >
         <div className="container flex items-center justify-between">
-          <div className="text-base">logo</div>
+          <SvgWrapper width="w-16" svgComponent={<Logo />} />
           <ul className="flex gap-2">
             {headerLinks.map((el, idx) => (
               <li key={idx} className="" suppressContentEditableWarning>
