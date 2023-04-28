@@ -7,26 +7,25 @@ import { api } from "~/utils/api";
 import Layout from "~/layout/Layout";
 import Aos from "aos";
 import { appWithTranslation } from "next-i18next";
-
+import { RecoilRoot } from "recoil";
 
 import "~/styles/globals.css";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
-
   useEffect(() => {
     Aos.init({
-      duration:1200,
-      once:true,
+      duration: 1200,
+      once: true,
     });
   }, []);
 
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <RecoilRoot>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </RecoilRoot>
   );
 };
-
-
 
 export default api.withTRPC(appWithTranslation(MyApp));

@@ -5,7 +5,8 @@
       "template": "Template",
       "for": "for",
       "future": "future",
-      "projects": "projects"
+      "projects": "projects",
+      "add-one":"add one"
     }
   }
 }

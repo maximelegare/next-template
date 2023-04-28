@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import type { FC } from "react";
 
 import { Button } from "~/components/core/Button";
@@ -10,13 +10,13 @@ import { FaGlobeAmericas } from "react-icons/fa";
 
 import { useTranslation } from "next-i18next";
 
-export const Header: FC = ( ) => {
+export const Header: FC = () => {
+  const { t, i18n } = useTranslation(["layout"]);
 
-  const { t } = useTranslation("layout")
-
+ 
   const headerLinks = [
-    { title: t("header.portfolio"), route: "#" },
-    { title: t("header.about"), route: "#" },
+    { title: "header.portfolio", route: "#" },
+    { title: "header.about", route: "#" },
   ];
 
   const { locales } = useRouter();
@@ -32,9 +32,9 @@ export const Header: FC = ( ) => {
           <div className="text-base">logo</div>
           <ul className="flex gap-2">
             {headerLinks.map((el, idx) => (
-              <li key={idx} className="">
+              <li key={idx} className="" suppressContentEditableWarning>
                 <Button styles="btn-base" href={el.route}>
-                  {el.title}
+                  {t(el.title)}
                 </Button>
               </li>
             ))}

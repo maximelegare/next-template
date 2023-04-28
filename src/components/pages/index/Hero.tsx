@@ -4,10 +4,19 @@ import { Section } from "~/components/core/Section";
 import { useTranslation } from "next-i18next";
 import Logo from "../../../../public/assets/SVG/logo.svg";
 
+import { Button } from "~/components/core/Button";
+
 import { SvgWrapper } from "~/components/core/SvgWrapper";
+
+import { useRecoilState } from "recoil";
+import { counterAtomState } from "atoms/counterAtom";
 
 export const Hero = () => {
   const { t } = useTranslation("common");
+
+  const [counterState, setCounterState] = useRecoilState(counterAtomState);
+
+  
 
   return (
     <Section styles="gradiant">
@@ -34,6 +43,12 @@ export const Hero = () => {
             {t("index.hero.projects")}{" "}
             <span className="font-display text-6xl text-accent">.</span>
           </h1>
+        </div>
+        <div className="mt-8 flex items-center gap-4 rounded-md p-7">
+          <h3 className="text-3xl">{counterState}</h3>
+          <Button handleClick={() => setCounterState(counterState + 1)} styles="btn-accent">
+            {t("index.hero.add-one")}
+          </Button>
         </div>
       </div>
     </Section>
