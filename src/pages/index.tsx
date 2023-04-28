@@ -1,14 +1,13 @@
 import { type NextPage } from "next";
-import Link from "next/link";
 import { HeroSection } from "~/components/pages/index/heroSection";
 import { api } from "~/utils/api";
 
-import { useEffect } from "react";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations" 
 
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
-
+ 
 
   return (
     <>
@@ -20,3 +19,13 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+
+export async function getStaticProps({locale}:{locale:string}){
+
+  return {
+    props:{
+      ... (await serverSideTranslations(locale, ['common', "layout"]))
+    }
+  }
+}

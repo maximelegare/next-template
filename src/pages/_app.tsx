@@ -6,6 +6,8 @@ import { api } from "~/utils/api";
 
 import Layout from "~/layout/Layout";
 import Aos from "aos";
+import { appWithTranslation } from "next-i18next";
+
 
 import "~/styles/globals.css";
 
@@ -25,4 +27,6 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   );
 };
 
-export default api.withTRPC(MyApp);
+
+
+export default api.withTRPC(appWithTranslation(MyApp));
