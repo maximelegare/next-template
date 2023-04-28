@@ -24,7 +24,7 @@ export const Button: FC<Props> = ({ children, variant, styles, href, handleClick
   return (
     <>
       {href ? (
-        <Link className={`${getClasses(variant)} ${styles ?? ""} btn-base100 w-24`} href={href}>
+        <Link className={`${getClasses(variant)} ${styles ?? ""} w-24`} href={href}>
           {children}
         </Link>
       ) : (

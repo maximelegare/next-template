@@ -9,8 +9,17 @@ body {
 }
 
 
+.gradiant{
+  @apply bg-gradient-to-tl from-[#3c1155] from-20% via-[#39155a] via-70% to-[#3b1680] to-95%;
+}
+
+.l{
+  background-color: #4f617e;
+}
 
 
+rgba(41, 2, 64, 1) 0%,
+  rgba(34, 9, 98, 1) 100%
 
 /**
 * Data AOS Custom Animations

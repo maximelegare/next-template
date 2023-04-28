@@ -42,7 +42,7 @@ export const Header: FC = ( ) => {
             <Dropdown
               trigger={{
                 triggerTitle: <FaGlobeAmericas />,
-                triggerStyles: "btn-circle w-8",
+                triggerStyles: "btn-base btn-circle w-8",
               }}
               content={{ items: mapLocales ?? [] }}
             />

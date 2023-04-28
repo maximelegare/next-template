@@ -1,7 +1,6 @@
 import React from "react";
 import type { ReactElement, FC } from "react";
 
-import { useMemo } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
 
@@ -12,12 +11,11 @@ type Props = {
 };
 
 const Layout: FC<Props> = ({ children, }) => {
-  const memoizedValue = useMemo(() => <>{children}</>, [children]);
 
   return (
     <>
       <Header></Header>
-      <main>{memoizedValue}</main>
+      <main>{children}</main>
       {/* <Footer></Footer> */}
     </>
   );
