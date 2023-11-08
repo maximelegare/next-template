@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 403.74 205.41">
+    <defs>
+        <style>
+            .cls-1 {
+                fill: #37cdbe;
+            }
+
+            .cls-2 {
+                font-size: 120.81px;
+                fill: #ede9fe;
+                font-family: Lobster-Regular, Lobster;
+            }
+        </style>
+    </defs>
+    <title>Asset 1</title>
+    <g id="Layer_2" data-name="Layer 2">
+        <g id="Layer_1-2" data-name="Layer 1">
+            <ellipse class="cls-1" cx="206.87" cy="102.71" rx="168.87" ry="102.71" /><text class="cls-2"
+                transform="translate(0 125.9)">Maximel</text>
+        </g>
+    </g>
+</svg>
