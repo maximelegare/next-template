@@ -8,7 +8,6 @@ export type ExampleSchemaModel = z.infer<typeof ExampleSchema>
 
 export {ExampleSchema}
 
-
 const ExampleSchema = z.object({
     message:z.string()
 })

@@ -14,16 +14,16 @@ export const Header: FC<Props> = ({ openSidebar }) => {
     <>
       <header className={`fixed flex h-16  w-full justify-center`}>
         <div className="w- flex h-16 w-full items-center justify-center bg-primary  text-white">
-          <div className="flex mx-3 justify-between w-full">
-            <div className="w-32 flex items-center">
+          <div className="mx-3 flex w-full justify-between">
+            <div className="flex w-32 items-center">
               <Logo />
             </div>
             <Button
               handleClick={openSidebar}
               variant="icon-only"
-            >
-              <IconBurger className="text-white text-3xl"/>
-            </Button>
+              buttonSize="lg"
+              icon={<IconBurger />}
+            />
           </div>
         </div>
       </header>
