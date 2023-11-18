@@ -10,7 +10,7 @@ import { useController } from "~/hooks/useController";
 export const Example = () => {
   const { useGetExample, usePostExample } = useController();
 
-  const { openDialog } = useDialogs();
+  const { toggleDialog } = useDialogs();
 
   const { data: queryData } = useGetExample("2");
   const { mutate, data: postData } = usePostExample();
@@ -24,7 +24,7 @@ export const Example = () => {
       <Button
         text="OpenDialog"
         variant="default"
-        handleClick={() => openDialog("example")}
+        handleClick={() => toggleDialog("example")}
       />
 
       {queryData?.example && queryData.example.message}

@@ -17,6 +17,7 @@ import { PageLayout } from "./PageLayout";
 import { Drawer } from "~/layout/partials/drawer/Drawer";
 
 import { ExampleDialogContent } from "~/layout/partials/dialogs/exmpleDialog/ExampleDialogContent";
+import { R_Dialog } from "~/components/RADIX/R_Dialog";
 
 type Props = {
   children: ReactElement;
@@ -36,11 +37,12 @@ const DefaultLayout: FC<Props> = ({ children }) => {
       <Footer></Footer>
       <Drawer show={showDrawer} close={() => setShowDrawer(false)} />
 
-      <BottomDialog
+      {/* <BottomDialog
         show={dialogVisibilitiy}
         timeout={600}
         classNamesPrefix="bottom-dialog"
-      />
+      /> */}
+       <R_Dialog />
     </>
   );
 };

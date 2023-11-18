@@ -1,4 +1,3 @@
-
 import { useRecoilState } from "recoil";
 import {
   currentlyUsedDialogAtom,
@@ -7,32 +6,29 @@ import {
 
 import { type IDialogs } from "atoms/dialogAtom";
 
-
 export const useDialogs = () => {
-  
-  const [show, setShow] = useRecoilState(
-    dialogVisibilityAtom
-  );
+  const [show, setShow] = useRecoilState(dialogVisibilityAtom);
   const [currentDialog, setCurrentDialog] = useRecoilState(
     currentlyUsedDialogAtom
   );
 
-  
-
-  const openDialog = (slug: IDialogs) => {
-    setShow(true)
-    setCurrentDialog(slug);
+  const toggleDialog = (slug?: IDialogs) => {
+    if (slug) {
+      setShow(!show);
+      setCurrentDialog(slug);
+    } else {
+      setShow(false);
+    }
   };
 
   const closeDialog = () => {
-    setShow(false)
+    setShow(false);
   };
 
   return {
     closeDialog,
-    openDialog,
+    toggleDialog,
     currentDialog,
-    show
-    
+    show,
   };
 };

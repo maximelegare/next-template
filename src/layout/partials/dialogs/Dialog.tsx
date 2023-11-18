@@ -20,7 +20,7 @@ export const BottomDialog: FC<Props> = ({
   classNamesPrefix,
 }) => {
   const ref = useRef(null);
-  const { closeDialog } = useDialogs();
+  const { toggleDialog } = useDialogs();
 
   const currentDialog = useRecoilValue(currentlyUsedDialogAtom);
 
@@ -59,7 +59,7 @@ export const BottomDialog: FC<Props> = ({
       {show && (
         <div
           className="fixed bottom-0 left-0 right-0 top-0  bg-neutral opacity-70"
-          onClick={() => closeDialog()}
+          onClick={() => toggleDialog()}
         ></div>
       )}
     </>
