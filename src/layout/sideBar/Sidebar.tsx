@@ -39,14 +39,37 @@ export const Sidebar = ({ show, closeSidebar }: Props) => {
         >
           <div className="mx-4 h-full">
             <div className="flex h-full flex-col justify-between py-4">
-              <Button
-                variant="icon-with-text"
-                buttonSize="xs"
-                text="Close"
-                
-                handleClick={() => closeSidebar()}
-                icon={<IconClose />}
-              />
+              <div className="flex flex-col gap-1">
+                <Button
+                justifyContent="start"
+                  variant="icon-with-text"
+                  buttonSize="xs"
+                  text="Close"
+                  handleClick={() => closeSidebar()}
+                  icon={<IconClose />}
+                  bgColor="btn-error"
+                />
+                <Button
+                  topSeparator
+                  variant="icon-with-text"
+                  buttonSize="full-width"
+                  text="Close"
+                  justifyContent="start"
+                  handleClick={() => closeSidebar()}
+                  icon={<IconClose />}
+                  bgColor="bg-transparent"
+                />
+                <Button
+                  variant="icon-with-text"
+                  buttonSize="full-width"
+                  text="Close"
+                  justifyContent="start"
+                  handleClick={() => closeSidebar()}
+                  icon={<IconClose />}
+                  bgColor="bg-transparent"
+                />
+              </div>
+              <div className="text-center text-base-100">footer message</div>
             </div>
           </div>
         </div>

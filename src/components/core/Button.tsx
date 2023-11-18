@@ -3,7 +3,7 @@ import Link from "next/link";
 
 type Variant = "icon-only" | "default" | "icon-round-filled" | "icon-with-text";
 type ButtonSize = "xs" | "sm" | "md" | "lg" | "full-width";
-
+type JustifyContent = "start" | "center" | "end";
 interface Props {
   handleClick?: (
     e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>
@@ -17,7 +17,7 @@ interface Props {
   bgColor?: string;
   bgResetButtonColor?: string;
   topSeparator?: boolean;
-  contentStart?: boolean;
+  justifyContent?: JustifyContent;
   icon?: ReactElement;
   text?: string;
 }
@@ -28,15 +28,13 @@ export const Button: FC<Props> = ({
   type,
   disabled,
   href,
-  underline,
   bgColor = "bg-primary",
   buttonSize = "sm",
   topSeparator,
-  contentStart,
+  justifyContent = "center",
   icon,
   text,
 }) => {
-  
   const getIconSize = (buttonSize: ButtonSize) => {
     switch (buttonSize) {
       case "xs": {
@@ -105,8 +103,7 @@ export const Button: FC<Props> = ({
 
   const getButtonElements = (variant: Variant) => {
     switch (variant) {
-
-      case "icon-round-filled": 
+      case "icon-round-filled":
       case "icon-only": {
         return (
           <div className="flex items-center justify-center">
@@ -114,7 +111,7 @@ export const Button: FC<Props> = ({
           </div>
         );
       }
-     
+
       case "icon-with-text": {
         return (
           <div className="flex items-center gap-2">
@@ -129,15 +126,34 @@ export const Button: FC<Props> = ({
     }
   };
 
+  const getJustifyContentStyles = (justify: JustifyContent) => {
+    switch (justify) {
+      case "center": {
+        return "justify-center";
+      }
+      case "start": {
+        return "justify-start pl-0";
+      }
+      case "end": {
+        return "justify-end pr-0";
+      }
+    }
+  };
+
   const getButtonBalise = () => {
     if (href) {
       return (
         <Link
           href={href ?? ""}
           onClick={handleClick}
-          className={` flex h-fit flex-col items-center ${
-            contentStart ? "justify-start" : ""
-          } ${disabled ? "btn-disabled" : ""} ${getButtonStyles(variant)}`}
+          className={`
+          flex
+          h-fit
+          flex-col
+          items-center
+          ${getJustifyContentStyles(justifyContent)}
+          ${disabled ? "btn-disabled" : ""}
+          ${getButtonStyles(variant)}`}
           passHref
         >
           {getButtonElements(variant)}
@@ -148,11 +164,16 @@ export const Button: FC<Props> = ({
         <button
           type={type}
           onClick={handleClick}
-          className={`flex h-fit  ${
-            contentStart ? "justify-start" : ""
-          } items-center normal-case  outline-none outline-offset-0 ${
-            disabled ? "btn-disabled" : ""
-          } ${getButtonStyles(variant)}`}
+          className={`
+          flex
+          h-fit
+          ${getJustifyContentStyles(justifyContent)}
+          items-center
+          normal-case
+          outline-none
+          outline-offset-0
+          ${disabled ? "btn-disabled" : ""}
+          ${getButtonStyles(variant)}`}
           disabled={disabled}
         >
           {getButtonElements(variant)}
@@ -164,12 +185,8 @@ export const Button: FC<Props> = ({
   return (
     <>
       <div className="relative cursor-pointer">
-        {topSeparator && <hr className="mt-3" />}
+        {topSeparator && <hr />}
         <div className="flex">{getButtonBalise()}</div>
-
-        <div className={underline ? "visible" : "hidden"}>
-          <div className="bg-gradiantAccent absolute -bottom-[7px] h-1 w-full rounded-full"></div>
-        </div>
       </div>
     </>
   );
