@@ -14,7 +14,7 @@ import {
 import { BottomDialog } from "~/layout/partials/dialogs/Dialog";
 
 import { PageLayout } from "./PageLayout";
-import { Sidebar } from "~/layout/partials/sideBar/Sidebar";
+import { Drawer } from "~/layout/partials/drawer/Drawer";
 
 import { ExampleDialogContent } from "~/layout/partials/dialogs/exmpleDialog/ExampleDialogContent";
 
@@ -25,16 +25,16 @@ type Props = {
 const DefaultLayout: FC<Props> = ({ children }) => {
   const dialogVisibilitiy = useRecoilValue(dialogVisibilityAtom);
 
-  const [showSidebar, setShowSidebar] = useState(false);
+  const [showDrawer, setShowDrawer] = useState(false);
 
   return (
     <>
-      <Header openSidebar={() => setShowSidebar(true)}></Header>
+      <Header openSidebar={() => setShowDrawer(true)}></Header>
       <main>
         <PageLayout>{children}</PageLayout>
       </main>
       <Footer></Footer>
-      <Sidebar show={showSidebar} closeSidebar={() => setShowSidebar(false)} />
+      <Drawer show={showDrawer} close={() => setShowDrawer(false)} />
 
       <BottomDialog
         show={dialogVisibilitiy}

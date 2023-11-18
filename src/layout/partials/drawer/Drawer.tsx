@@ -4,11 +4,6 @@ import { useSession } from "next-auth/react";
 import { Button } from "../../../components/core/Button";
 import { signOut } from "next-auth/react";
 import {
-  IconSignout,
-  IconUsers,
-  IconProfile,
-  IconGroup,
-  IconCalculator,
   IconClose,
 } from "../../../components/core/Icons";
 import Image from "next/image";
@@ -16,10 +11,10 @@ import { useRouter } from "next/router";
 
 interface Props {
   show: boolean;
-  closeSidebar: () => void;
+  close: () => void;
 }
 
-export const Sidebar = ({ show, closeSidebar }: Props) => {
+export const Drawer = ({ show, close }: Props) => {
   const { data: sessionData } = useSession();
   const ref = useRef(null);
   const { pathname } = useRouter();
@@ -29,12 +24,13 @@ export const Sidebar = ({ show, closeSidebar }: Props) => {
       <CSSTransition
         in={show}
         unmountOnExit
-        nodeRef={ref.current}
-        timeout={500}
+        nodeRef={ref}
+        timeout={600}
         classNames="sidebar"
       >
         <div
           id="sidebar"
+          ref={ref}
           className="fixed  right-0 top-0 z-10 h-screen w-[80%] max-w-[300px] overflow-auto bg-primary-focus"
         >
           <div className="mx-4 h-full">
@@ -45,7 +41,7 @@ export const Sidebar = ({ show, closeSidebar }: Props) => {
                   variant="icon-with-text"
                   buttonSize="xs"
                   text="Close"
-                  handleClick={() => closeSidebar()}
+                  handleClick={() => close()}
                   icon={<IconClose />}
                   bgColor="btn-error"
                 />
@@ -55,7 +51,7 @@ export const Sidebar = ({ show, closeSidebar }: Props) => {
                   buttonSize="full-width"
                   text="Close"
                   justifyContent="start"
-                  handleClick={() => closeSidebar()}
+                  handleClick={() => close()}
                   icon={<IconClose />}
                   bgColor="bg-transparent"
                 />
@@ -64,7 +60,7 @@ export const Sidebar = ({ show, closeSidebar }: Props) => {
                   buttonSize="full-width"
                   text="Close"
                   justifyContent="start"
-                  handleClick={() => closeSidebar()}
+                  handleClick={() => close()}
                   icon={<IconClose />}
                   bgColor="bg-transparent"
                 />
@@ -76,7 +72,7 @@ export const Sidebar = ({ show, closeSidebar }: Props) => {
       </CSSTransition>
       {show && (
         <div
-          onClick={() => closeSidebar()}
+          onClick={() => close()}
           className="fixed bottom-0 left-0 right-0 top-0  bg-neutral opacity-70"
         ></div>
       )}
