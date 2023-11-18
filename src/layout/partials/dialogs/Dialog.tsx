@@ -1,5 +1,5 @@
 import React, { useRef, type FC, type ReactNode } from "react";
-import { DialogLayout } from "~/layout/dialogs/DialogLayout";
+import { DialogLayout } from "./DialogLayout"; 
 
 import { CSSTransition } from "react-transition-group";
 

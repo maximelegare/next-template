@@ -11,12 +11,12 @@ import {
   dialogVisibilityAtom,
 } from "atoms/dialogAtom";
 
-import { BottomDialog } from "~/layout/dialogs/Dialog";
+import { BottomDialog } from "~/layout/partials/dialogs/Dialog";
 
 import { PageLayout } from "./PageLayout";
-import { Sidebar } from "~/layout/sideBar/Sidebar";
+import { Sidebar } from "~/layout/partials/sideBar/Sidebar";
 
-import { ExampleDialogContent } from "~/layout/dialogs/exmpleDialog/ExampleDialogContent";
+import { ExampleDialogContent } from "~/layout/partials/dialogs/exmpleDialog/ExampleDialogContent";
 
 type Props = {
   children: ReactElement;

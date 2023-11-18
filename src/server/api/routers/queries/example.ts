@@ -2,7 +2,7 @@ import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
-import { ExampleSchema } from "~/models/zod/models";
+import { ExampleSchema } from "~/server/types/zod/models";
 
 export const exampleRouter__QUERY = createTRPCRouter({
   test: publicProcedure

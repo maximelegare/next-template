@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 import { useSession } from "next-auth/react";
-import { Button } from "../../components/core/Button";
+import { Button } from "../../../components/core/Button";
 import { signOut } from "next-auth/react";
 import {
   IconSignout,
@@ -10,7 +10,7 @@ import {
   IconGroup,
   IconCalculator,
   IconClose,
-} from "../../components/core/Icons";
+} from "../../../components/core/Icons";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
@@ -41,7 +41,7 @@ export const Sidebar = ({ show, closeSidebar }: Props) => {
             <div className="flex h-full flex-col justify-between py-4">
               <div className="flex flex-col gap-1">
                 <Button
-                justifyContent="start"
+                  justifyContent="start"
                   variant="icon-with-text"
                   buttonSize="xs"
                   text="Close"
