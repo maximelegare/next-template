@@ -16,4 +16,7 @@ export const currentlyUsedDialogAtom = atom<IDialogs>({
   default:"example"
 })
 
-
+export const drawerVisibilityAtom = atom<boolean>({
+  key: "drawerVisibilityAtom",
+  default: false,
+});

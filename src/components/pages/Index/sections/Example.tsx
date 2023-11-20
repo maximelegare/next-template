@@ -3,14 +3,14 @@ import React from "react";
 import { IconAddGroup } from "~/components/core/Icons";
 import { Button } from "~/components/core/Button";
 
-import { useDialogs } from "~/hooks/useDialogs";
+import { useLayout } from "~/hooks/useLayout";
 
 import { useController } from "~/hooks/useController";
 
 export const Example = () => {
   const { useGetExample, usePostExample } = useController();
 
-  const { toggleDialog } = useDialogs();
+  const { toggleDialog } = useLayout();
 
   const { data: queryData } = useGetExample("2");
   const { mutate, data: postData } = usePostExample();

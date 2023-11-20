@@ -5,11 +5,13 @@ import Logo from "../../../../public/assets/SVG/partago_white.svg";
 import { Button } from "~/components/core/Button";
 import { IconBurger } from "~/components/core/Icons";
 
-interface Props {
-  openSidebar: () => void;
-}
 
-export const Header: FC<Props> = ({ openSidebar }) => {
+import { useLayout } from "~/hooks/useLayout";
+
+export const Header = () => {
+
+  const {toggleDrawer} = useLayout()
+
   return (
     <>
       <header className={`fixed flex h-16  w-full justify-center`}>
@@ -19,7 +21,7 @@ export const Header: FC<Props> = ({ openSidebar }) => {
               <Logo />
             </div>
             <Button
-              handleClick={openSidebar}
+              handleClick={() => toggleDrawer()}
               variant="icon-only"
               buttonSize="lg"
               icon={<IconBurger />}

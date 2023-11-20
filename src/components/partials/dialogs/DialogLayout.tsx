@@ -5,7 +5,6 @@ interface Props {
   bgColor?: string;
   noPaddingTopAndBottom?: boolean;
   noMinHeight?: boolean;
-  title: string;
 }
 
 export const DialogLayout: FC<Props> = ({

@@ -78,39 +78,14 @@ th {
   transition: all 400ms cubic-bezier(0.75, 0.06, 0.97, 0.63);
 }
 
-
-
-
 /* 
 * Radix Components animations
 */
-.DialogOverlay {
+.Overlay {
   @apply bg-[#0a040452];
   position: fixed;
   inset: 0;
   animation: overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.DialogContent:focus {
-  outline: none;
-}
-
-@keyframes fadeIn {
-  from {
-    @apply -bottom-full;
-  }
-  to {
-    @apply bottom-0;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    @apply bottom-0;
-  }
-  to {
-    @apply -bottom-full;
-  }
 }
 
 @keyframes fadeInOverlay {
@@ -130,18 +105,73 @@ th {
     opacity: 0;
   }
 }
-
-.DialogContent[data-state="open"] {
-  animation: fadeIn 600ms cubic-bezier(0.01, 0.45, 0, 0.99);
+.Overlay[data-state="open"] {
+  animation: fadeInOverlay 300ms ease-out;
+}
+.Overlay[data-state="closed"] {
+  animation: fadeOutOverlay 300ms ease-in;
 }
 
-.DialogOverlay[data-state="open"] {
-  animation: fadeInOverlay 300ms ease-out;
+/* Dialog */
+
+.DialogContent:focus {
+  outline: none;
+}
+
+@keyframes dialogEnter {
+  from {
+    @apply -bottom-full;
+  }
+  to {
+    @apply bottom-0;
+  }
+}
+
+@keyframes dialogLeave {
+  from {
+    @apply bottom-0;
+  }
+  to {
+    @apply -bottom-full;
+  }
+}
+
+.DialogContent[data-state="open"] {
+  animation: dialogEnter 600ms cubic-bezier(0.01, 0.45, 0, 0.99);
 }
 
 .DialogContent[data-state="closed"] {
-  animation: fadeOut 400ms cubic-bezier(0.75, 0.06, 0.97, 0.63);
+  animation: dialogLeave 400ms cubic-bezier(0.75, 0.06, 0.97, 0.63);
 }
-.DialogOverlay[data-state="closed"] {
-  animation: fadeInOverlay 300ms ease-in;
+
+/* Drawer */
+
+.DrawerContent:focus {
+  outline: none;
+}
+
+@keyframes drawerEnter {
+  from {
+    @apply -right-full;
+  }
+  to {
+    @apply right-0;
+  }
+}
+
+@keyframes drawerLeave {
+  from {
+    @apply right-0;
+  }
+  to {
+    @apply -right-full;
+  }
+}
+
+.DrawerContent[data-state="open"] {
+  animation: drawerEnter 600ms cubic-bezier(0.01, 0.45, 0, 0.99);
+}
+
+.DrawerContent[data-state="closed"] {
+  animation: drawerLeave 400ms cubic-bezier(0.75, 0.06, 0.97, 0.63);
 }

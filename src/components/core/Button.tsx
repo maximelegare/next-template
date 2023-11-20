@@ -25,7 +25,7 @@ interface Props {
 export const Button: FC<Props> = ({
   variant = "default",
   handleClick,
-  type,
+  type = "button",
   disabled,
   href,
   bgColor = "bg-primary",
@@ -145,6 +145,7 @@ export const Button: FC<Props> = ({
       return (
         <Link
           href={href ?? ""}
+          
           onClick={handleClick}
           className={`
           flex

@@ -2,12 +2,12 @@ import React from "react";
 
 import { Button } from "~/components/core/Button";
 
-import { useDialogs } from "~/hooks/useDialogs";
+import { useLayout } from "~/hooks/useLayout";
 
 import { DialogHeader } from "../DialogHeader";
 
 export const ExampleDialogContent = () => {
-  const { closeDialog } = useDialogs();
+  const { toggleDialog } = useLayout();
 
   return (
     <div>
@@ -15,7 +15,7 @@ export const ExampleDialogContent = () => {
 
       <Button
         variant="default"
-        handleClick={() => closeDialog()}
+        handleClick={() => toggleDialog()}
         text="Close Dialog"
       />
     </div>
