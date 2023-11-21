@@ -13,7 +13,7 @@ export const PageLayout: FC<Props> = ({
   return (
     <div className={`flex-grow min-h-6 ${bgColor} pt-16`}>
       <div className="h-full">
-        <R_ScrollBar thumbColor="bg-transparent">{children}</R_ScrollBar>
+        <R_ScrollBar alwaysShowThumb>{children}</R_ScrollBar>
       </div>
     </div>
   );
