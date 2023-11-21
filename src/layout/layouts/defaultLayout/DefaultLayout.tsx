@@ -4,7 +4,6 @@ import type { ReactElement, FC } from "react";
 import { Header } from "../../../components/partials/layout/Header";
 import { Footer } from "../../../components/partials/layout/Footer";
 
-
 import { PageLayout } from "./PageLayout";
 
 import { R_Dialog } from "~/components/RADIX/R_Dialog";
@@ -15,20 +14,14 @@ type Props = {
 };
 
 const DefaultLayout: FC<Props> = ({ children }) => {
-
-
   return (
-    <>
+    <div className="flex h-screen w-full flex-col">
       <Header></Header>
-      <main>
-        <PageLayout>{children}</PageLayout>
-      </main>
+      <PageLayout>{children}</PageLayout>
       <Footer></Footer>
-
       <R_Dialog />
-      <R_Drawer  />
-        
-    </>
+      <R_Drawer />
+    </div>
   );
 };
 

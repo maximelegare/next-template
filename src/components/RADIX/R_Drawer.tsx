@@ -11,7 +11,7 @@ export const R_Drawer = () => {
     <Dialog.Root open={showDrawer} onOpenChange={() => toggleDrawer()}>
       <Dialog.Portal>
         <Dialog.Overlay className="Overlay" />
-        <Dialog.Content className="DrawerContent fixed  right-0 top-0 z-10 h-screen w-[80%] max-w-[300px] overflow-auto bg-primary-focus">
+        <Dialog.Content className="DrawerContent fixed  z-30 right-0 top-0  h-screen w-[80%] max-w-[300px] overflow-auto bg-primary-focus">
           <DrawerContent />
         </Dialog.Content>
       </Dialog.Portal>

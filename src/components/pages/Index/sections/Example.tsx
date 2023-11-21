@@ -6,6 +6,7 @@ import { Button } from "~/components/core/Button";
 import { useLayout } from "~/hooks/useLayout";
 
 import { useController } from "~/hooks/useController";
+import { R_ScrollBar } from "~/components/RADIX/R_ScrollBar";
 
 export const Example = () => {
   const { useGetExample, usePostExample } = useController();
@@ -37,16 +38,101 @@ export const Example = () => {
       />
       {postData?.message && postData.message}
 
-      <div className="flex flex-col gap-2 mt-2">
+      <div className="mt-2 flex flex-col gap-2">
         <Button variant="icon-only" buttonSize="lg" icon={<IconAddGroup />} />
-        <Button variant="icon-with-text" buttonSize="xs"  icon={<IconAddGroup/>} text="Add Friend" />
-        <Button variant="icon-with-text"  buttonSize="sm" icon={<IconAddGroup/>} text="Add Friend" />
-        <Button variant="icon-with-text"  buttonSize="md" icon={<IconAddGroup/>} text="Add Friend" />
-        <Button variant="icon-with-text"  buttonSize="lg" icon={<IconAddGroup/>} text="Add Friend" />
-        <Button variant="icon-round-filled"  icon={<IconAddGroup/>} text="Add Friend" />
-        <Button variant="icon-round-filled"  icon={<IconAddGroup/>} text="Add Friend" />
-        <Button variant="icon-round-filled"  icon={<IconAddGroup/>} text="Add Friend" />
-        <Button variant="icon-round-filled"  buttonSize="lg"  icon={<IconAddGroup/>} text="Add Friend" />
+        <Button
+          variant="icon-with-text"
+          buttonSize="xs"
+          icon={<IconAddGroup />}
+          text="Add Friend"
+        />
+        <Button
+          variant="icon-with-text"
+          buttonSize="sm"
+          icon={<IconAddGroup />}
+          text="Add Friend"
+        />
+        <Button
+          variant="icon-with-text"
+          buttonSize="md"
+          icon={<IconAddGroup />}
+          text="Add Friend"
+        />
+        <Button
+          variant="icon-with-text"
+          buttonSize="lg"
+          icon={<IconAddGroup />}
+          text="Add Friend"
+        />
+        <Button
+          variant="icon-round-filled"
+          icon={<IconAddGroup />}
+          text="Add Friend"
+        />
+        <Button
+          variant="icon-round-filled"
+          icon={<IconAddGroup />}
+          text="Add Friend"
+        />
+        <Button
+          variant="icon-round-filled"
+          icon={<IconAddGroup />}
+          text="Add Friend"
+        />
+        <Button
+          variant="icon-round-filled"
+          buttonSize="lg"
+          icon={<IconAddGroup />}
+          text="Add Friend"
+        />
+        <Button
+          variant="icon-round-filled"
+          buttonSize="lg"
+          icon={<IconAddGroup />}
+          text="Add Friend"
+        />
+        <Button
+          variant="icon-round-filled"
+          buttonSize="lg"
+          icon={<IconAddGroup />}
+          text="Add Friend"
+        />
+        <Button
+          variant="icon-round-filled"
+          buttonSize="lg"
+          icon={<IconAddGroup />}
+          text="Add Friend"
+        />
+        <Button
+          variant="icon-round-filled"
+          buttonSize="lg"
+          icon={<IconAddGroup />}
+          text="Add Friend"
+        />
+        <Button
+          variant="icon-round-filled"
+          buttonSize="lg"
+          icon={<IconAddGroup />}
+          text="Add Friend"
+        />
+        <Button
+          variant="icon-round-filled"
+          buttonSize="lg"
+          icon={<IconAddGroup />}
+          text="Add Friend"
+        />
+        <Button
+          variant="icon-round-filled"
+          buttonSize="lg"
+          icon={<IconAddGroup />}
+          text="Add Friend"
+        />
+        <Button
+          variant="icon-round-filled"
+          buttonSize="lg"
+          icon={<IconAddGroup />}
+          text="Add Friend"
+        />
       </div>
     </div>
   );

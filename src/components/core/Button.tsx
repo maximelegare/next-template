@@ -185,9 +185,9 @@ export const Button: FC<Props> = ({
 
   return (
     <>
-      <div className="relative cursor-pointer">
+      <div className="relative cursor-pointer w-fit">
         {topSeparator && <hr />}
-        <div className="flex">{getButtonBalise()}</div>
+        {getButtonBalise()}
       </div>
     </>
   );

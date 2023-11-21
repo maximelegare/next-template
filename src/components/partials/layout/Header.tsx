@@ -14,7 +14,7 @@ export const Header = () => {
 
   return (
     <>
-      <header className={`fixed flex h-16  w-full justify-center`}>
+      <header className={`fixed flex h-16 z-20  w-full justify-center`}>
         <div className="w- flex h-16 w-full items-center justify-center bg-primary  text-white">
           <div className="mx-3 flex w-full justify-between">
             <div className="flex w-32 items-center">

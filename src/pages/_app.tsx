@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   return (
     <SessionProvider session={session as Session}>
       <RecoilRoot>
-        <Layout>
+        <Layout >
           <Component {...pageProps} />
         </Layout>
       </RecoilRoot>

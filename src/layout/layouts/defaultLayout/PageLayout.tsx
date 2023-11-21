@@ -1,4 +1,5 @@
 import React, { type ReactElement, type FC } from "react";
+import { R_ScrollBar } from "~/components/RADIX/R_ScrollBar";
 
 interface Props {
   children: ReactElement;
@@ -7,11 +8,13 @@ interface Props {
 
 export const PageLayout: FC<Props> = ({
   children,
-  bgColor = "bg-base-100",
+  bgColor = "bg-transparent",
 }) => {
   return (
-    <div className={`min-h-screen w-full ${bgColor} py-16`}>
-      <div className="mx-5 my-3" >{children}</div>
+    <div className={`flex-grow min-h-6 ${bgColor} pt-16`}>
+      <div className="h-full">
+        <R_ScrollBar thumbColor="bg-transparent">{children}</R_ScrollBar>
+      </div>
     </div>
   );
 };
