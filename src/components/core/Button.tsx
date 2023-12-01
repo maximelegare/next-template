@@ -71,7 +71,7 @@ export const Button: FC<Props> = ({
         return "btn-lg text-xl";
       }
       case "full-width": {
-        return "btn-sm btn-block";
+        return "btn-block";
       }
     }
   };
@@ -145,7 +145,6 @@ export const Button: FC<Props> = ({
       return (
         <Link
           href={href ?? ""}
-          
           onClick={handleClick}
           className={`
           flex
@@ -185,7 +184,11 @@ export const Button: FC<Props> = ({
 
   return (
     <>
-      <div className="relative cursor-pointer w-fit">
+      <div
+        className={`${
+          buttonSize === "full-width" ? "" : "w-fit"
+        } relative cursor-pointer`}
+      >
         {topSeparator && <hr />}
         {getButtonBalise()}
       </div>
