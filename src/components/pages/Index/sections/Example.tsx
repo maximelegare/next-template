@@ -8,7 +8,12 @@ import { useLayout } from "~/hooks/useLayout";
 import { useController } from "~/hooks/useController";
 import { R_ScrollBar } from "~/components/RADIX/R_ScrollBar";
 
+import { useTranslation } from "next-i18next";
+
 export const Example = () => {
+
+  const {t} = useTranslation("common")
+
   const { useGetExample, usePostExample } = useController();
 
   const { toggleDialog } = useLayout();
@@ -23,7 +28,7 @@ export const Example = () => {
   return (
     <div>
       <Button
-        text="OpenDialog"
+        text={t("buttons.add-friend")}
         variant="default"
         handleClick={() => toggleDialog("example")}
       />
@@ -44,94 +49,94 @@ export const Example = () => {
           variant="icon-with-text"
           buttonSize="xs"
           icon={<IconAddGroup />}
-          text="Add Friend"
+          text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-with-text"
           buttonSize="sm"
           icon={<IconAddGroup />}
-          text="Add Friend"
+          text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-with-text"
           buttonSize="md"
           icon={<IconAddGroup />}
-          text="Add Friend"
+          text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-with-text"
           buttonSize="lg"
           icon={<IconAddGroup />}
-          text="Add Friend"
+          text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-round-filled"
           icon={<IconAddGroup />}
-          text="Add Friend"
+          text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-round-filled"
           icon={<IconAddGroup />}
-          text="Add Friend"
+          text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-round-filled"
           icon={<IconAddGroup />}
-          text="Add Friend"
-        />
-        <Button
-          variant="icon-round-filled"
-          buttonSize="lg"
-          icon={<IconAddGroup />}
-          text="Add Friend"
+          text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-round-filled"
           buttonSize="lg"
           icon={<IconAddGroup />}
-          text="Add Friend"
+          text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-round-filled"
           buttonSize="lg"
           icon={<IconAddGroup />}
-          text="Add Friend"
+          text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-round-filled"
           buttonSize="lg"
           icon={<IconAddGroup />}
-          text="Add Friend"
+          text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-round-filled"
           buttonSize="lg"
           icon={<IconAddGroup />}
-          text="Add Friend"
+          text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-round-filled"
           buttonSize="lg"
           icon={<IconAddGroup />}
-          text="Add Friend"
+          text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-round-filled"
           buttonSize="lg"
           icon={<IconAddGroup />}
-          text="Add Friend"
+          text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-round-filled"
           buttonSize="lg"
           icon={<IconAddGroup />}
-          text="Add Friend"
+          text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-round-filled"
           buttonSize="lg"
           icon={<IconAddGroup />}
-          text="Add Friend"
+          text={t("buttons.add-friend")}
+        />
+        <Button
+          variant="icon-round-filled"
+          buttonSize="lg"
+          icon={<IconAddGroup />}
+          text={t("buttons.add-friend")}
         />
       </div>
     </div>

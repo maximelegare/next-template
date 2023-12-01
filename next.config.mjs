@@ -42,6 +42,10 @@ const config = {
     return config;
   },
   reactStrictMode: true,
+  i18n: {
+    defaultLocale: "fr",
+    locales: ["en", "fr"],
+  },
   images: {
     domains: ["cdn.pixabay.com", "lh3.googleusercontent.com"],
   },

@@ -2,7 +2,7 @@ import { type AppType } from "next/app";
 
 import App from "next/app";
 
-import { AppContext, AppProps } from "next/app";
+import type { AppContext, AppProps } from "next/app";
 
 import { api } from "~/utils/trpc/api";
 
@@ -16,10 +16,10 @@ import { getServerAuthSession } from "~/server/auth";
 
 import "~/styles/globals.css";
 import { useSession } from "next-auth/react";
-import { IncomingMessage, ServerResponse } from "http";
+import { appWithTranslation } from "next-i18next"; 
 
 
-function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
+const  MyApp = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
   return (
     <SessionProvider session={session as Session}>
       <RecoilRoot>
@@ -31,4 +31,5 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   );
 }
 
-export default api.withTRPC(MyApp);
+
+export default api.withTRPC(appWithTranslation(MyApp));

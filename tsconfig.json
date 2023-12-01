@@ -29,6 +29,6 @@
     "**/*.cjs",
     "**/*.mjs",
     "decs.d.ts"
-, "./jest.setup.js","./jest.config.js" ],
+, "./jest.setup.js","./jest.config.js", "src/utils/i18n/i18next.js", "./next-i18next.config.js" ],
   "exclude": ["node_modules"]
 }
