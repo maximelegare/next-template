@@ -37,37 +37,39 @@ export const Example = () => {
       <br />
       <Button
         text="Post example"
-        buttonSize="sm"
+        size="sm"
         variant="default"
         handleClick={() => handlePost()}
       />
       {postData?.message && postData.message}
 
       <div className="mt-2 flex flex-col gap-2">
-        <Button variant="icon-only" buttonSize="lg" icon={<IconAddGroup />} />
+        <Button variant="icon-only" size="lg" icon={<IconAddGroup />} />
         <Button
           variant="icon-with-text"
-          buttonSize="xs"
+          size="xs"
           icon={<IconAddGroup />}
           text={t("buttons.add-friend")}
+          
         />
         <Button
           variant="icon-with-text"
-          buttonSize="sm"
-          icon={<IconAddGroup />}
-          text={t("buttons.add-friend")}
-        />
-        <Button
-          variant="icon-with-text"
-          buttonSize="md"
+          size="sm"
           icon={<IconAddGroup />}
           text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-with-text"
-          buttonSize="lg"
+          size="md"
           icon={<IconAddGroup />}
           text={t("buttons.add-friend")}
+        />
+        <Button
+          variant="icon-with-text"
+          size="lg"
+          icon={<IconAddGroup />}
+          text={t("buttons.add-friend")}
+          color="success"
         />
         <Button
           variant="icon-round-filled"
@@ -86,55 +88,55 @@ export const Example = () => {
         />
         <Button
           variant="icon-round-filled"
-          buttonSize="lg"
+          size="lg"
           icon={<IconAddGroup />}
           text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-round-filled"
-          buttonSize="lg"
+          size="lg"
           icon={<IconAddGroup />}
           text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-round-filled"
-          buttonSize="lg"
+          size="lg"
           icon={<IconAddGroup />}
           text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-round-filled"
-          buttonSize="lg"
+          size="lg"
           icon={<IconAddGroup />}
           text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-round-filled"
-          buttonSize="lg"
+          size="lg"
           icon={<IconAddGroup />}
           text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-round-filled"
-          buttonSize="lg"
+          size="lg"
           icon={<IconAddGroup />}
           text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-round-filled"
-          buttonSize="lg"
+          size="lg"
           icon={<IconAddGroup />}
           text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-round-filled"
-          buttonSize="lg"
+          size="lg"
           icon={<IconAddGroup />}
           text={t("buttons.add-friend")}
         />
         <Button
           variant="icon-round-filled"
-          buttonSize="lg"
+          size="lg"
           icon={<IconAddGroup />}
           text={t("buttons.add-friend")}
         />

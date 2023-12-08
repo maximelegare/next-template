@@ -2,8 +2,24 @@ import React, { ReactElement, type FC, type ReactNode } from "react";
 import Link from "next/link";
 
 type Variant = "icon-only" | "default" | "icon-round-filled" | "icon-with-text";
-type ButtonSize = "xs" | "sm" | "md" | "lg" | "full-width";
+type size = "xs" | "sm" | "md" | "lg" ;
 type JustifyContent = "start" | "center" | "end";
+type Width = "fit" | "full";
+type Color =
+  | "primary"
+  | "primary-content"
+  | "primary-focus"
+  | "secondary"
+  | "secondary-content"
+  | "secondary-focus"
+  | "accent"
+  | "neutral"
+  | "neutral-content"
+  | "base-100"
+  | "base-200"
+  | "success"
+  | "error";
+
 interface Props {
   handleClick?: (
     e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement, MouseEvent>
@@ -12,14 +28,15 @@ interface Props {
   href?: string;
   variant: Variant;
   type?: "button" | "submit" | "reset";
-  buttonSize?: ButtonSize;
+  size?: size;
   underline?: boolean;
-  bgColor?: string;
   bgResetButtonColor?: string;
   topSeparator?: boolean;
   justifyContent?: JustifyContent;
   icon?: ReactElement;
   text?: string;
+  color?: Color;
+  width?: Width;
 }
 
 export const Button: FC<Props> = ({
@@ -28,14 +45,15 @@ export const Button: FC<Props> = ({
   type = "button",
   disabled,
   href,
-  bgColor = "bg-primary",
-  buttonSize = "sm",
+  size = "sm",
   topSeparator,
   justifyContent = "center",
   icon,
   text,
+  width = "fit",
+  color = "primary",
 }) => {
-  const getIconSize = (buttonSize: ButtonSize) => {
+  const getIconSize = (buttonSize: size) => {
     switch (buttonSize) {
       case "xs": {
         return "text-sm";
@@ -49,30 +67,66 @@ export const Button: FC<Props> = ({
       case "lg": {
         return "text-[1.7rem]";
       }
-
       default: {
         return "text-sm";
       }
     }
   };
 
-  const getButtonSize = (buttonSize: ButtonSize) => {
+  const getButtonWidth = (width: Width) => {
+    switch (width) {
+      case "fit":
+        return "";
+      case "full":
+        return "btn-block";
+    }
+  };
+
+  const getButtonSize = (buttonSize: size) => {
     switch (buttonSize) {
       case "xs": {
-        return "btn-xs";
+        return `btn-xs `;
       }
       case "sm": {
-        return "btn-sm text-sm";
+        return `btn-sm text-sm `;
       }
       case "md": {
-        return "btn-md text-lg";
+        return "btn-md text-lg ";
       }
       case "lg": {
-        return "btn-lg text-xl";
+        return " btn-lg text-xl";
       }
-      case "full-width": {
-        return "btn-block";
-      }
+    }
+  };
+
+  const getButtonColor = (color: Color) => {
+    switch (color) {
+      case "primary":
+        return "btn-primary";
+      case "primary-content":
+        return "btn-primary-content";
+      case "primary-focus":
+        return "btn-primary-focus";
+      case "secondary":
+        return "btn-secondary";
+      case "secondary-content":
+        return "btn-secondary-content";
+      case "secondary-focus":
+        return "btn-secondary-focus";
+      case "accent":
+        return "btn-accent";
+      case "base-100":
+        return "btn-base-100";
+      case "base-200":
+        return "btn-base-200";
+      case "error":
+        return "btn-error";
+      case "success":
+        return "btn-success";
+      case "neutral":
+        return "btn-neutral";
+      case "neutral-content":
+        return "btn-neutral-content";
     }
   };
 
@@ -80,23 +134,23 @@ export const Button: FC<Props> = ({
     switch (variant) {
       case "icon-only": {
         return `btn  btn-circle w-fit px-1 py-1 min-h-0 ${getButtonSize(
-          buttonSize
+          size
         )} outline-none border-none bg-transparent hover:bg-transparent focus:bg-transparent`;
       }
       case "icon-round-filled": {
-        return `btn ${bgColor} ${getButtonSize(
-          buttonSize
-        )} btn-circle btn-primary border-none`;
+        return `btn ${getButtonColor(color)} ${getButtonSize(
+          size
+        )} btn-circle  border-none`;
       }
       case "default": {
-        return `btn ${bgColor} ${getButtonSize(
-          buttonSize
-        )} btn-primary border-none`;
+        return `btn ${getButtonColor(color)} ${getButtonSize(
+          size
+        )} border-none`;
       }
       default: {
-        return `btn ${bgColor} ${getButtonSize(
-          buttonSize
-        )} btn-primary border-none`;
+        return `btn ${getButtonColor(color)} ${getButtonSize(
+          size
+        )} border-none`;
       }
     }
   };
@@ -107,7 +161,7 @@ export const Button: FC<Props> = ({
       case "icon-only": {
         return (
           <div className="flex items-center justify-center">
-            <span className={getIconSize(buttonSize)}>{icon}</span>
+            <span className={getIconSize(size)}>{icon}</span>
           </div>
         );
       }
@@ -115,7 +169,7 @@ export const Button: FC<Props> = ({
       case "icon-with-text": {
         return (
           <div className="flex items-center gap-2">
-            <span className={getIconSize(buttonSize)}>{icon}</span>
+            <span className={getIconSize(size)}>{icon}</span>
             <p>{text}</p>
           </div>
         );
@@ -152,6 +206,7 @@ export const Button: FC<Props> = ({
           flex-col
           items-center
           ${getJustifyContentStyles(justifyContent)}
+          ${getButtonWidth(width)}
           ${disabled ? "btn-disabled" : ""}
           ${getButtonStyles(variant)}`}
           passHref
@@ -168,6 +223,7 @@ export const Button: FC<Props> = ({
           flex
           h-fit
           ${getJustifyContentStyles(justifyContent)}
+          ${getButtonWidth(width)}
           items-center
           normal-case
           outline-none
@@ -185,9 +241,7 @@ export const Button: FC<Props> = ({
   return (
     <>
       <div
-        className={`${
-          buttonSize === "full-width" ? "" : "w-fit"
-        } relative cursor-pointer`}
+        className={`${width === "full" ? "" : "w-fit"} relative cursor-pointer`}
       >
         {topSeparator && <hr />}
         {getButtonBalise()}

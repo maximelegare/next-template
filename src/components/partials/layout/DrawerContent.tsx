@@ -17,30 +17,30 @@ export const DrawerContent = () => {
           <Button
             justifyContent="start"
             variant="icon-with-text"
-            buttonSize="xs"
+            size="xs"
             text="Close"
             handleClick={() => toggleDrawer()}
             icon={<IconClose />}
-            bgColor="btn-error"
+            color="error"
+            
           />
           <Button
             topSeparator
             variant="icon-with-text"
-            buttonSize="full-width"
+            size="lg"
             text="Close"
             justifyContent="start"
             handleClick={() => toggleDrawer()}
             icon={<IconClose />}
-            bgColor="bg-transparent"
+            width="full"
           />
           <Button
             variant="icon-with-text"
-            buttonSize="full-width"
             text="Close"
             justifyContent="start"
             handleClick={() => toggleDrawer()}
             icon={<IconClose />}
-            bgColor="bg-transparent"
+            width="full"
           />
         </div>
         <div className="text-center text-base-100">footer message</div>
