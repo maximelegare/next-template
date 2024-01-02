@@ -9,6 +9,7 @@ import { useController } from "~/hooks/useController";
 import { R_ScrollBar } from "~/components/RADIX/R_ScrollBar";
 
 import { useTranslation } from "next-i18next";
+import { useAlert } from "~/hooks/useAlert";
 
 export const Example = () => {
 
@@ -25,10 +26,24 @@ export const Example = () => {
     mutate({ id: "12345" }); // Data from the state to post
   };
 
+  const {openAlert} = useAlert()
+
+  const handleOpenAlert = () => {
+    openAlert(() => console.log("Alert was  deleted"), {
+      title: "Are you sure?",
+      message: "Are you sure you want to delete the account?",
+      btns: {
+        action: { text: "Delete", color: "error" },
+        cancel: { color: "ghost", text:"Cancel" },
+      },
+    });
+  };  
+
+
   return (
     <div>
       <Button
-        text={t("buttons.add-friend")}
+        text={t("buttons.open-bottom-dialog")}
         variant="default"
         handleClick={() => toggleDialog("example")}
       />
@@ -49,7 +64,8 @@ export const Example = () => {
           variant="icon-with-text"
           size="xs"
           icon={<IconAddGroup />}
-          text={t("buttons.add-friend")}
+          text={t("Open Alert")}
+          handleClick={() => handleOpenAlert()}
           
         />
         <Button

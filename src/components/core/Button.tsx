@@ -1,24 +1,25 @@
-import React, { ReactElement, type FC, type ReactNode } from "react";
+import React, { ForwardedRef, forwardRef, ReactElement, type ReactNode } from "react";
 import Link from "next/link";
 
-type Variant = "icon-only" | "default" | "icon-round-filled" | "icon-with-text";
-type size = "xs" | "sm" | "md" | "lg" ;
+type Variant =
+  | "icon-only"
+  | "default"
+  | "icon-round-filled"
+  | "icon-with-text"
+  | "icon-footer"
+  | "icon-square-filled";
+type size = "xs" | "sm" | "md" | "lg";
 type JustifyContent = "start" | "center" | "end";
 type Width = "fit" | "full";
-type Color =
+export type Color =
   | "primary"
-  | "primary-content"
-  | "primary-focus"
-  | "secondary"
-  | "secondary-content"
-  | "secondary-focus"
   | "accent"
   | "neutral"
-  | "neutral-content"
   | "base-100"
   | "base-200"
   | "success"
-  | "error";
+  | "error"
+  | "ghost";
 
 interface Props {
   handleClick?: (
@@ -30,16 +31,18 @@ interface Props {
   type?: "button" | "submit" | "reset";
   size?: size;
   underline?: boolean;
-  bgResetButtonColor?: string;
   topSeparator?: boolean;
   justifyContent?: JustifyContent;
   icon?: ReactElement;
   text?: string;
   color?: Color;
   width?: Width;
+  opacityFull?: boolean;
+  customOneTimeButton?: ReactElement;
+  textColor?: "premium";
 }
 
-export const Button: FC<Props> = ({
+export const Button = forwardRef(function Button({
   variant = "default",
   handleClick,
   type = "button",
@@ -52,7 +55,10 @@ export const Button: FC<Props> = ({
   text,
   width = "fit",
   color = "primary",
-}) => {
+  opacityFull = true,
+  customOneTimeButton,
+  textColor,
+}: Props, ref:ForwardedRef<HTMLButtonElement>) {
   const getIconSize = (buttonSize: size) => {
     switch (buttonSize) {
       case "xs": {
@@ -103,16 +109,6 @@ export const Button: FC<Props> = ({
     switch (color) {
       case "primary":
         return "btn-primary";
-      case "primary-content":
-        return "btn-primary-content";
-      case "primary-focus":
-        return "btn-primary-focus";
-      case "secondary":
-        return "btn-secondary";
-      case "secondary-content":
-        return "btn-secondary-content";
-      case "secondary-focus":
-        return "btn-secondary-focus";
       case "accent":
         return "btn-accent";
       case "base-100":
@@ -120,20 +116,21 @@ export const Button: FC<Props> = ({
       case "base-200":
         return "btn-base-200";
       case "error":
-        return "btn-error";
+        return "btn-error text-white/80";
       case "success":
         return "btn-success";
       case "neutral":
         return "btn-neutral";
-      case "neutral-content":
-        return "btn-neutral-content";
+      case "ghost":
+        return "btn-ghost text-neutral-content";
     }
   };
 
   const getButtonStyles = (variant: Variant) => {
     switch (variant) {
+      case "icon-footer":
       case "icon-only": {
-        return `btn  btn-circle w-fit px-1 py-1 min-h-0 ${getButtonSize(
+        return `btn btn-circle min-w-[50px] w-fit px-1 py-1 min-h-0 ${getButtonSize(
           size
         )} outline-none border-none bg-transparent hover:bg-transparent focus:bg-transparent`;
       }
@@ -147,6 +144,7 @@ export const Button: FC<Props> = ({
           size
         )} border-none`;
       }
+      case "icon-square-filled":
       default: {
         return `btn ${getButtonColor(color)} ${getButtonSize(
           size
@@ -155,27 +153,50 @@ export const Button: FC<Props> = ({
     }
   };
 
+  const getOpacity = () => (opacityFull ? "opacity-100" : "opacity-50");
+
+  const getTextColor = () =>
+    textColor ? "text-premium opacity-80" : "text-neutral-content";
+
   const getButtonElements = (variant: Variant) => {
     switch (variant) {
       case "icon-round-filled":
       case "icon-only": {
         return (
-          <div className="flex items-center justify-center">
-            <span className={getIconSize(size)}>{icon}</span>
+          <div
+            className={`${getOpacity()}  ${getTextColor()} flex items-center justify-center`}
+          >
+            <span className={`${getIconSize(size)}`}>{icon}</span>
+          </div>
+        );
+      }
+
+      case "icon-square-filled": {
+        return <div className={getTextColor()}>{icon}</div>;
+      }
+      case "icon-footer": {
+        return (
+          <div
+            className={`${getOpacity()} ${getTextColor()} flex min-w-[50px] flex-col items-center justify-center`}
+          >
+            <span className={`${getIconSize(size)}`}>{icon}</span>
+            <p className={` text-xs uppercase`}>{text}</p>
           </div>
         );
       }
 
       case "icon-with-text": {
         return (
-          <div className="flex items-center gap-2">
-            <span className={getIconSize(size)}>{icon}</span>
+          <div
+            className={`${getOpacity()} ${getTextColor()} flex items-center gap-2`}
+          >
+            <span className={` ${getIconSize(size)}`}>{icon}</span>
             <p>{text}</p>
           </div>
         );
       }
       case "default": {
-        return <div>{text}</div>;
+        return <div className={getTextColor()}>{text}</div>;
       }
     }
   };
@@ -203,20 +224,25 @@ export const Button: FC<Props> = ({
           className={`
           flex
           h-fit
-          flex-col
           items-center
+          normal-case
+          outline-none
+          outline-offset-0
           ${getJustifyContentStyles(justifyContent)}
           ${getButtonWidth(width)}
           ${disabled ? "btn-disabled" : ""}
           ${getButtonStyles(variant)}`}
           passHref
         >
-          {getButtonElements(variant)}
+          {customOneTimeButton
+            ? customOneTimeButton
+            : getButtonElements(variant)}
         </Link>
       );
     } else {
       return (
         <button
+          ref={ref}
           type={type}
           onClick={handleClick}
           className={`
@@ -232,7 +258,9 @@ export const Button: FC<Props> = ({
           ${getButtonStyles(variant)}`}
           disabled={disabled}
         >
-          {getButtonElements(variant)}
+          {customOneTimeButton
+            ? customOneTimeButton
+            : getButtonElements(variant)}
         </button>
       );
     }
@@ -248,4 +276,4 @@ export const Button: FC<Props> = ({
       </div>
     </>
   );
-};
+});

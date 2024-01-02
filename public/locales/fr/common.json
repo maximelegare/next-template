@@ -1,5 +1,6 @@
 {
     "buttons":{
-        "add-friend":"Ajouter un ami"
+        "open-bottom-dialog":"Ouvrir Dialog"
+
     }
 }
